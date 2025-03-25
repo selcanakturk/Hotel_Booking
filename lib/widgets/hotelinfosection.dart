@@ -35,7 +35,7 @@ class HotelInfoSection extends StatelessWidget {
                 Text(
                   "Yaşadığınız tüm deneyimlerin ötesinde...",
                   style: TextStyle(
-                    fontSize: 28, // Başlığı büyüt
+                    fontSize: 35, // Başlığı büyüt
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -47,7 +47,7 @@ class HotelInfoSection extends StatelessWidget {
                     color: Colors.grey[700], // Açıklama rengi
                   ),
                 ),
-                SizedBox(height: 20),
+                SizedBox(height: 50),
                 Row(
                   children: [
                     Icon(Icons.phone, color: Colors.black),

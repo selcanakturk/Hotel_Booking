@@ -35,12 +35,21 @@ class _HeroSectionState extends State<HeroSection> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Image.asset(
-          'assets/images/slider1.jpg',
-          height: 500,
-          width: double.infinity,
-          fit: BoxFit.cover,
+        // Saydamlaştırılmış Arka Plan Resmi
+        ColorFiltered(
+          colorFilter: ColorFilter.mode(
+            Colors.black.withOpacity(0.4), // Resmi saydamlaştırmak için opaklık
+            BlendMode.darken,
+          ),
+          child: Image.asset(
+            'assets/images/slider1.jpg',
+            height: 500,
+            width: double.infinity,
+            fit: BoxFit.cover,
+          ),
         ),
+
+        // İçerik (Metin)
         Positioned(
           left: 50,
           top: 200,
@@ -48,9 +57,9 @@ class _HeroSectionState extends State<HeroSection> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "THE PALM BOSPHORUS OTEL",
+                "Lüks Konaklama",
                 style: TextStyle(
-                  fontSize: 14,
+                  fontSize: 40,
                   fontWeight: FontWeight.bold,
                   letterSpacing: 1.5,
                   color: Colors.white,
@@ -58,16 +67,38 @@ class _HeroSectionState extends State<HeroSection> {
               ),
               SizedBox(height: 10),
               Text(
-                "Yaşadığınız tüm deneyimlerin ötesinde...",
+                "Oda servisi ve konforlu odalar ile konaklama deneyiminizi üst seviyeye çıkaralım",
                 style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
                   color: Colors.white,
+                ),
+              ),
+              SizedBox(height: 20),
+              OutlinedButton(
+                style: OutlinedButton.styleFrom(
+                  padding: EdgeInsets.symmetric(horizontal: 35, vertical: 20),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(0),
+                  ),
+                  side: BorderSide(
+                      color: Colors.white, width: 2), // Beyaz kenarlık
+                ),
+                onPressed: () {
+                  print("Rezervasyon yapıldı!");
+                },
+                child: Text(
+                  "REZERVASYON",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold, // Kalın beyaz yazı
+                  ),
                 ),
               ),
             ],
           ),
         ),
+
         Transform.translate(
           offset: Offset(0, 450),
           child: Container(
