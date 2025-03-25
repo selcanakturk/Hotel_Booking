@@ -5,56 +5,59 @@ class FeaturesSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      child: Column(
-        children: [
-          const Text(
-            'THE PALM BOSPHORUSTA',
-            style: TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w600,
-              color: Colors.grey,
+    return Container(
+      color: Colors.grey.shade200, // Beyaz arka plan
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 50.0),
+        child: Column(
+          children: [
+            const Text(
+              'THE PALM BOSPHORUSTA',
+              style: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w600,
+                color: Colors.grey,
+              ),
             ),
-          ),
-          const SizedBox(height: 8),
-          const Text(
-            'Ayrıcalıklar',
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
+            const SizedBox(height: 8),
+            const Text(
+              'Ayrıcalıklar',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ),
-          const SizedBox(height: 8),
-          const Text(
-            'The Palm Bosphorus Otel’de ayrıcalıklar sizleri bekliyor.',
-            textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 16),
-          ),
-          const SizedBox(height: 24),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: const [
-              _FeatureBox(
-                icon: Icons.phone_in_talk_outlined,
-                title: '7/24 Oda Servisi',
-                description:
-                    '7/24 oda servisi ile tüm ihtiyaçlarınızı karşılayalım.',
-              ),
-              _FeatureBox(
-                icon: Icons.wifi,
-                title: 'Wi-Fi',
-                description: 'Ücretsiz wifi erişimi.',
-              ),
-              _FeatureBox(
-                icon: Icons.videocam_outlined,
-                title: 'Yüksek Koruma',
-                description:
-                    'Otelimiz 7/24 güvenlik sistemleri ile korunmaktadır.',
-              ),
-            ],
-          ),
-        ],
+            const SizedBox(height: 8),
+            const Text(
+              'The Palm Bosphorus Otel’de ayrıcalıklar sizleri bekliyor.',
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 16),
+            ),
+            const SizedBox(height: 24),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: const [
+                _FeatureBox(
+                  icon: Icons.phone_in_talk_outlined,
+                  title: '7/24 Oda Servisi',
+                  description:
+                      '7/24 oda servisi ile tüm ihtiyaçlarınızı karşılayalım.',
+                ),
+                _FeatureBox(
+                  icon: Icons.wifi,
+                  title: 'Wi-Fi',
+                  description: 'Ücretsiz wifi erişimi.',
+                ),
+                _FeatureBox(
+                  icon: Icons.videocam_outlined,
+                  title: 'Yüksek Koruma',
+                  description:
+                      'Otelimiz 7/24 güvenlik sistemleri ile korunmaktadır.',
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -33,13 +33,18 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               ),
               const SizedBox(width: 12),
               ElevatedButton(
-                onPressed: () {},
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.white,
-                  foregroundColor: Colors.black,
-                  side: const BorderSide(color: Colors.black),
+                  padding: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(0),
+                  ),
+                  shadowColor: Colors.black,
+                  elevation: 8,
                 ),
-                child: const Text('REZERVASYON'),
+                onPressed: () {},
+                child:
+                    Text("REZERVASYON", style: TextStyle(color: Colors.black)),
               ),
             ],
           )

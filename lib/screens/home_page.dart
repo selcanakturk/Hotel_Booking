@@ -3,12 +3,12 @@ import 'package:otel_anasayfa/widgets/customappbar.dart';
 import 'package:otel_anasayfa/widgets/featuressection.dart';
 import 'package:otel_anasayfa/widgets/herosection.dart';
 import 'package:otel_anasayfa/widgets/hotelinfosection.dart';
-import 'package:otel_anasayfa/widgets/reservationform.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
+      backgroundColor: Colors.white, // Arka planı beyaz yaptık
       body: Column(
         children: [
           CustomAppBar(),

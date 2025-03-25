@@ -82,10 +82,10 @@ class _HeroSectionState extends State<HeroSection> {
                   ),
                   side: BorderSide(
                       color: Colors.white, width: 2), // Beyaz kenarlık
+                  shadowColor: Colors.black,
+                  elevation: 8,
                 ),
-                onPressed: () {
-                  print("Rezervasyon yapıldı!");
-                },
+                onPressed: () {},
                 child: Text(
                   "REZERVASYON",
                   style: TextStyle(
@@ -211,7 +211,7 @@ class _HeroSectionState extends State<HeroSection> {
                     backgroundColor: Colors.grey[300],
                     padding: EdgeInsets.symmetric(horizontal: 35, vertical: 25),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(5),
+                      borderRadius: BorderRadius.circular(0),
                     ),
                     shadowColor: Colors.black,
                     elevation: 6,
