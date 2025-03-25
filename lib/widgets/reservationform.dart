@@ -10,15 +10,18 @@ class ReservationForm extends StatefulWidget {
 class _ReservationFormState extends State<ReservationForm> {
   DateTime? checkInDate;
   DateTime? checkOutDate;
-  String selectedGuest = '1';
+  int selectedGuest = 1;
 
   Future<void> _selectDate({required bool isCheckIn}) async {
+    if (!mounted) return;
+
     final DateTime? picked = await showDatePicker(
       context: context,
       initialDate: DateTime.now(),
       firstDate: DateTime(2020),
       lastDate: DateTime(2030),
     );
+
     if (picked != null && mounted) {
       setState(() {
         if (isCheckIn) {
@@ -33,11 +36,12 @@ class _ReservationFormState extends State<ReservationForm> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(top: -40, left: 16, right: 16),
+      height: 120,
+      margin: const EdgeInsets.only(top: 0, left: 200, right: 200),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(0),
         boxShadow: const [
           BoxShadow(
             color: Color.fromRGBO(0, 0, 0, 0.1),
@@ -46,88 +50,133 @@ class _ReservationFormState extends State<ReservationForm> {
           )
         ],
       ),
-      child: Column(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly, // Boşlukları eşit yap
         children: [
-          Row(
-            children: [
-              Expanded(
-                child: GestureDetector(
-                  onTap: () => _selectDate(isCheckIn: true),
-                  child: Container(
-                    padding: const EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Text(
-                      checkInDate != null
-                          ? 'Giriş: ${checkInDate!.day}/${checkInDate!.month}/${checkInDate!.year}'
-                          : 'Giriş Tarihi',
-                    ),
-                  ),
-                ),
+          // Giriş Tarihi
+          GestureDetector(
+            onTap: () => _selectDate(isCheckIn: true),
+            child: Container(
+              padding: const EdgeInsets.all(12),
+              width: 160,
+              height: 60,
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.grey),
+                borderRadius: BorderRadius.zero,
               ),
-              const SizedBox(width: 10),
-              Expanded(
-                child: GestureDetector(
-                  onTap: () => _selectDate(isCheckIn: false),
-                  child: Container(
-                    padding: const EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Text(
-                      checkOutDate != null
-                          ? 'Çıkış: ${checkOutDate!.day}/${checkOutDate!.month}/${checkOutDate!.year}'
-                          : 'Çıkış Tarihi',
-                    ),
-                  ),
+              child: Text(
+                style: TextStyle(
+                  color: Colors.grey.shade600,
+                  fontSize: 15,
                 ),
+                checkInDate != null
+                    ? 'Giriş: ${checkInDate!.day}/${checkInDate!.month}/${checkInDate!.year}'
+                    : 'Giriş Tarihi',
               ),
-            ],
+            ),
           ),
-          const SizedBox(height: 10),
-          Row(
-            children: [
-              Expanded(
-                child: DropdownButtonFormField<String>(
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                  ),
-                  value: selectedGuest.isNotEmpty ? selectedGuest : null,
-                  items: List.generate(
-                    5,
-                    (index) => DropdownMenuItem(
-                      value: '${index + 1}',
-                      child: Text('${index + 1} Ziyaretçi'),
-                    ),
-                  ),
-                  onChanged: (value) {
+          // Çıkış Tarihi
+          GestureDetector(
+            onTap: () => _selectDate(isCheckIn: false),
+            child: Container(
+              padding: const EdgeInsets.all(12),
+              width: 160,
+              height: 60,
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.grey),
+                borderRadius: BorderRadius.zero,
+              ),
+              child: Text(
+                style: TextStyle(
+                  color: Colors.grey.shade600,
+                  fontSize: 15,
+                ),
+                checkOutDate != null
+                    ? 'Çıkış: ${checkOutDate!.day}/${checkOutDate!.month}/${checkOutDate!.year}'
+                    : 'Çıkış Tarihi',
+              ),
+            ),
+          ),
+          // Ziyaretçi Sayısı
+          Container(
+            padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.grey),
+              borderRadius: BorderRadius.zero,
+            ),
+            child: Row(
+              children: [
+                IconButton(
+                  icon: const Icon(Icons.remove),
+                  onPressed: () {
                     setState(() {
-                      selectedGuest = value!;
+                      if (selectedGuest > 1) {
+                        selectedGuest--;
+                      }
                     });
                   },
                 ),
-              ),
-              const SizedBox(width: 10),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.grey[700],
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 16,
-                    horizontal: 24,
+                Text(
+                  '$selectedGuest Ziyaretçi',
+                  style: TextStyle(
+                    color: Colors.grey.shade600,
+                    fontSize: 15,
                   ),
                 ),
-                onPressed: () {
-                  // Rezervasyon işlemi yapılabilir
-                },
-                child: const Text('REZERVASYON'),
-              )
-            ],
-          )
+                IconButton(
+                  icon: const Icon(Icons.add),
+                  onPressed: () {
+                    setState(() {
+                      selectedGuest++;
+                    });
+                  },
+                ),
+              ],
+            ),
+          ),
+          // Rezervasyon Butonu
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.grey[300],
+              padding: const EdgeInsets.symmetric(
+                vertical: 30,
+                horizontal: 28,
+              ),
+              elevation: 5,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.zero,
+              ),
+            ),
+            onPressed: () {
+              print('checkInDate: $checkInDate');
+              print('checkOutDate: $checkOutDate');
+              if (checkInDate == null || checkOutDate == null) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text("Lütfen giriş ve çıkış tarihlerini seçin."),
+                  ),
+                );
+                return;
+              }
+
+              if (checkInDate!.isAfter(checkOutDate!)) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content:
+                        Text("Giriş tarihi çıkış tarihinden sonra olamaz."),
+                  ),
+                );
+                return;
+              }
+            },
+            child: const Text(
+              'REZERVASYON',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 13,
+              ),
+            ),
+          ),
         ],
       ),
     );
