@@ -6,7 +6,7 @@ class FeaturesSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.grey.shade200, // Beyaz arka plan
+      color: Colors.grey.shade200,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 50.0),
         child: Column(

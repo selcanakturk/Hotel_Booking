@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:otel_anasayfa/screens/about_page.dart';
+import 'package:otel_anasayfa/screens/home_page.dart';
 import 'package:otel_anasayfa/screens/rooms_page.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -18,7 +20,14 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           ),
           Row(
             children: [
-              _NavItem(title: 'ANA SAYFA', onTap: () {}),
+              _NavItem(
+                  title: 'ANA SAYFA',
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => HomePage()),
+                    );
+                  }),
               _NavItem(
                 title: 'ODALARIMIZ',
                 onTap: () {
@@ -28,7 +37,15 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                   );
                 },
               ),
-              _NavItem(title: 'HAKKIMIZDA', onTap: () {}),
+              _NavItem(
+                  title: 'HAKKIMIZDA',
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const AboutPage()),
+                    );
+                  }),
               _NavItem(title: 'İLETİŞİM', onTap: () {}),
               const SizedBox(width: 12),
               DropdownButton<String>(

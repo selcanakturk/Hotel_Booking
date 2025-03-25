@@ -8,95 +8,97 @@ class RoomsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(),
-      body: ListView(
-        children: [
-          Stack(
-            children: [
-              Image.asset(
-                'assets/images/room_header.jpg',
-                height: 250,
-                width: double.infinity,
-                fit: BoxFit.cover,
-              ),
-              Container(
-                height: 250,
-                color: Colors.black.withOpacity(0.3),
-              ),
-              const Positioned(
-                left: 30,
-                bottom: 30,
-                child: Text(
-                  'Odalarımız',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 30),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+      body: SafeArea(
+        child: ListView(
+          children: [
+            Stack(
               children: [
-                const Text(
-                  'ODALARIMIZ',
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: Colors.grey,
-                    letterSpacing: 1.5,
+                Image.asset(
+                  'assets/images/room_header.jpg',
+                  height: 400,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                ),
+                Container(
+                  height: 400,
+                  color: Colors.black.withOpacity(0.3),
+                ),
+                const Positioned(
+                  left: 30,
+                  bottom: 30,
+                  child: Text(
+                    'Odalarımız',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 35,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
-                const SizedBox(height: 8),
-                const Text(
-                  'Sizin için tasarlandı...',
-                  style: TextStyle(
-                    fontSize: 26,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(height: 8),
-                const Text(
-                  'Modern ve şık tasarımıyla size daha keyifli bir deneyim yaşatmak için tasarlandı.',
-                  style: TextStyle(fontSize: 16),
-                ),
-                const SizedBox(height: 24),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    Expanded(
-                      child: RoomCard(
-                        image: 'assets/images/room1.jpg',
-                        title: 'Suit 1',
-                        subtitle: '2 KİŞİLİK',
-                      ),
-                    ),
-                    SizedBox(width: 12),
-                    Expanded(
-                      child: RoomCard(
-                        image: 'assets/images/room2.jpg',
-                        title: 'Suit 2',
-                        subtitle: '2 KİŞİLİK',
-                      ),
-                    ),
-                    SizedBox(width: 12),
-                    Expanded(
-                      child: RoomCard(
-                        image: 'assets/images/room3.jpg',
-                        title: 'Connection',
-                        subtitle: '2 YETİŞKİN & 2 ÇOCUK',
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 50), // Sayfanın altına boşluk eklendi
               ],
             ),
-          )
-        ],
+            const SizedBox(height: 30),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'ODALARIMIZ',
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.grey,
+                      letterSpacing: 1.5,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  const Text(
+                    'Sizin için tasarlandı...',
+                    style: TextStyle(
+                      fontSize: 26,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  const Text(
+                    'Modern ve şık tasarımıyla size daha keyifli bir deneyim yaşatmak için tasarlandı.',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                  const SizedBox(height: 24),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: const [
+                      Expanded(
+                        child: RoomCard(
+                          image: 'assets/images/room1.jpg',
+                          title: 'Suit 1',
+                          subtitle: '2 KİŞİLİK',
+                        ),
+                      ),
+                      SizedBox(width: 12),
+                      Expanded(
+                        child: RoomCard(
+                          image: 'assets/images/room2.jpg',
+                          title: 'Suit 2',
+                          subtitle: '2 KİŞİLİK',
+                        ),
+                      ),
+                      SizedBox(width: 12),
+                      Expanded(
+                        child: RoomCard(
+                          image: 'assets/images/room3.jpg',
+                          title: 'Connection',
+                          subtitle: '2 YETİŞKİN & 2 ÇOCUK',
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 50), // Sayfanın altına boşluk eklendi
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
