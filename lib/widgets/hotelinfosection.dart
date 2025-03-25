@@ -6,7 +6,7 @@ class HotelInfoSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 30.0),
+      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 100.0),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

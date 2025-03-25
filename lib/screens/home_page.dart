@@ -17,7 +17,7 @@ class HomePage extends StatelessWidget {
               child: Column(
                 children: [
                   HeroSection(),
-                  ReservationForm(),
+                  //ReservationForm(),
                   HotelInfoSection(),
                   FeaturesSection(),
                 ],
