@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:otel_anasayfa/screens/rooms_page.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({super.key});
@@ -17,10 +18,18 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           ),
           Row(
             children: [
-              _NavItem(title: 'ANA SAYFA'),
-              _NavItem(title: 'ODALARIMIZ'),
-              _NavItem(title: 'HAKKIMIZDA'),
-              _NavItem(title: 'İLETİŞİM'),
+              _NavItem(title: 'ANA SAYFA', onTap: () {}),
+              _NavItem(
+                title: 'ODALARIMIZ',
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const RoomsPage()),
+                  );
+                },
+              ),
+              _NavItem(title: 'HAKKIMIZDA', onTap: () {}),
+              _NavItem(title: 'İLETİŞİM', onTap: () {}),
               const SizedBox(width: 12),
               DropdownButton<String>(
                 value: 'TR',
@@ -35,7 +44,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.white,
-                  padding: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(0),
                   ),
@@ -43,8 +53,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                   elevation: 8,
                 ),
                 onPressed: () {},
-                child:
-                    Text("REZERVASYON", style: TextStyle(color: Colors.black)),
+                child: const Text("REZERVASYON",
+                    style: TextStyle(color: Colors.black)),
               ),
             ],
           )
@@ -59,16 +69,20 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
 class _NavItem extends StatelessWidget {
   final String title;
-  const _NavItem({required this.title});
+  final VoidCallback? onTap; // onTap parametresi eklendi
+
+  const _NavItem({
+    Key? key,
+    required this.title,
+    this.onTap, // onTap tanımlandı
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 12.0),
       child: InkWell(
-        onTap: () {
-          // Navigasyon işlemi burada yapılabilir
-        },
+        onTap: onTap, // onTap burada çağrıldı
         child: Text(
           title,
           style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
