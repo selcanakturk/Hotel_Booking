@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:otel_anasayfa/screens/reservation_detail_page.dart';
 import 'package:otel_anasayfa/widgets/customappbar.dart';
 
 class RoomsPage extends StatelessWidget {
@@ -148,7 +149,13 @@ class RoomCard extends StatelessWidget {
             shadowColor: Colors.black,
             elevation: 6,
           ),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const ReservationDetailPage()),
+            );
+          },
           child:
               const Text("REZERVASYON", style: TextStyle(color: Colors.black)),
         ),

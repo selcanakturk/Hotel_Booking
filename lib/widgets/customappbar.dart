@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:otel_anasayfa/screens/about_page.dart';
+import 'package:otel_anasayfa/screens/contact_page.dart';
 import 'package:otel_anasayfa/screens/home_page.dart';
+import 'package:otel_anasayfa/screens/reservation_detail_page.dart';
 import 'package:otel_anasayfa/screens/rooms_page.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -46,7 +48,14 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                           builder: (context) => const AboutPage()),
                     );
                   }),
-              _NavItem(title: 'İLETİŞİM', onTap: () {}),
+              _NavItem(
+                  title: 'İLETİŞİM',
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ContactPage()),
+                    );
+                  }),
               const SizedBox(width: 12),
               DropdownButton<String>(
                 value: 'TR',
@@ -69,7 +78,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                   shadowColor: Colors.black,
                   elevation: 8,
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const ReservationDetailPage()),
+                  );
+                },
                 child: const Text("REZERVASYON",
                     style: TextStyle(color: Colors.black)),
               ),

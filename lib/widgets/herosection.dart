@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:otel_anasayfa/screens/reservation_detail_page.dart';
 
 class HeroSection extends StatefulWidget {
   const HeroSection({super.key});
@@ -85,7 +86,13 @@ class _HeroSectionState extends State<HeroSection> {
                   shadowColor: Colors.black,
                   elevation: 8,
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const ReservationDetailPage()),
+                  );
+                },
                 child: Text(
                   "REZERVASYON",
                   style: TextStyle(
@@ -217,7 +224,11 @@ class _HeroSectionState extends State<HeroSection> {
                     elevation: 6,
                   ),
                   onPressed: () {
-                    print("Rezervasyon yapıldı!");
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const ReservationDetailPage()),
+                    );
                   },
                   child: Text("REZERVASYON",
                       style: TextStyle(color: Colors.black)),
